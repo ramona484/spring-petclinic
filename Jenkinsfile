@@ -1,15 +1,9 @@
 pipeline {
-   agent none
-   stages {     
-    stage('Maven Install') {
-      agent {         
-       docker {          
-         image 'maven:3.5.0'         
-     }       
+  agent { docker 'maven:3.5-alpine }   
     stages {
-        stage ('Checkout'){
-            steps{
-            git 'https://github.com/Ramona84/spring-petclinic'
+        stage ('Checkout') {
+            steps {
+            git 'https://github.com/Ramona84/spring-petclinic.git'
         }
     }
     stage('Build'){
